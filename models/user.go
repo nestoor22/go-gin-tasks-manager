@@ -1,15 +1,14 @@
 package models
 
 import (
-	"time"
+	"github.com/google/uuid"
+	"gorm.io/gorm"
 )
-import "github.com/google/uuid"
 
 type User struct {
+	*gorm.Model
 	ID        uuid.UUID `gorm:"primaryKey;type:uuid;default:uuid_generate_v4()"`
 	FirstName string    `gorm:"not null"`
 	LastName  string    `gorm:"not null"`
 	Email     string    `gorm:"not null;uniqueIndex"`
-	CreatedAt time.Time // Auto-managed by GORM
-	UpdatedAt time.Time // Auto-managed by GORM
 }
